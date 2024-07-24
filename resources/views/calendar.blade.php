@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="pt-2">
-        <span>Fullcanlendar</span>
+        <div id="calendar"></div>
     </div>
 @endsection
