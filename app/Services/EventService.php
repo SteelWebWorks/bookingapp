@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class EventService
@@ -12,9 +13,10 @@ class EventService
     {
     }
 
-    public function getAllEvents(): Collection | EloquentCollection
+    public function getAllEvents(Carbon $start, Carbon $end): Collection | EloquentCollection
     {
-        return $this->eventFormatService->format(Event::all());
+
+        return $this->eventFormatService->format(Event::betweenDates($start, $end)->get());
     }
 
     public function getEvent(int $id): Event
