@@ -18,6 +18,7 @@ class EventsSeeder extends Seeder
             ->count(5)
             ->sequence(
                 [
+                    'name' => 'Otto',
                     'start_date' => '2024-09-08',
                     'end_date' => '2024-09-08',
                     'start_time' => '08:00:00',
@@ -25,27 +26,34 @@ class EventsSeeder extends Seeder
                     'recurring' => RecurringTypes::NONE
                 ],
                 [
+                    'name' => 'Béla',
                     'start_date' => '2024-01-01',
+                    'end_date' => null,
                     'start_time' => '10:00:00',
                     'end_time' => '12:00:00',
                     'day_of_the_week' => 1,
                     'recurring' => RecurringTypes::EVEN_WEEKLY
                 ],
                 [
+                    'name' => 'Tasziló',
                     'start_date' => '2024-01-01',
+                    'end_date' => null,
                     'start_time' => '12:00:00',
                     'end_time' => '16:00:00',
                     'day_of_the_week' => 3,
                     'recurring' => RecurringTypes::ODD_WEEKLY
                 ],
                 [
+                    'name' => 'Arisztid',
                     'start_date' => '2024-01-01',
+                    'end_date' => null,
                     'start_time' => '10:00:00',
                     'end_time' => '16:00:00',
                     'day_of_the_week' => 5,
                     'recurring' => RecurringTypes::WEEKLY
                 ],
                 [
+                    'name' => 'Vilmos',
                     'start_date' => '2024-06-01',
                     'end_date' => '2024-11-30',
                     'start_time' => '16:00:00',
