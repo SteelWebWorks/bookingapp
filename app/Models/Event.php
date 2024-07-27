@@ -27,7 +27,7 @@ class Event extends Model
         'recurring' => RecurringTypes::class
     ];
 
-    public function scopeBetweenDates(Builder $query, Carbon $startDate, Carbon $endDate)
+    public function scopeBetweenDates(Builder $query, Carbon $startDate, Carbon $endDate): Builder
     {
         $start = $startDate->startOfDay();
         $end = $endDate->endOfDay();

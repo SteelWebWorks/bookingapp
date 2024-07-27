@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Services;
+namespace App\Formatters;
 
 use App\Enums\RecurringTypes;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
-class EventFormatService
+class EventFormatter
 {
     public function format(Collection $events): Collection|EloquentCollection
     {
+        /** @var Event $event */
         return $events->map(function (Event $event) {
             $startDate = Carbon::parse($event->start_date . ' ' . $event->start_time);
             $endDate = Carbon::parse($event->end_date . ' ' . $event->end_time);
