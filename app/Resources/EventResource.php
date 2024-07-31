@@ -45,6 +45,7 @@ class EventResource extends JsonResource
                 RecurringTypes::ODD_WEEKLY => array_values(array_filter(range($startDate->weekOfYear(), 52), function ($week) {
                     return $week % 2 != 0;
                 })),
+                RecurringTypes::WEEKLY => range($startDate->weekOfYear(), 52),
                 default => []
             };
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Formatters\EventFormatter;
 use App\Http\Requests\EventRequest;
+use App\Models\Event;
 use App\Repositories\EventRepository;
 
 class PostNewEventController extends Controller
@@ -16,13 +17,16 @@ class PostNewEventController extends Controller
     {
         try {
             $event = $this->request->validated();
-            dd($event);
+            Event::create($event);
         } catch (\Exception $exception) {
             return response()->json([
+                'success' => false,
                 'message' => $exception->getMessage(),
             ], $exception->getCode());
         }
-
-        return response()->json();
+        return response()->json([
+            'success' => true,
+            'message' => __('Event created successfully'),
+        ]);
     }
 }
