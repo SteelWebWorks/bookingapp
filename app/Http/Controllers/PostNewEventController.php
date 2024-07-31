@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Formatters\EventFormatter;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Repositories\EventRepository;
