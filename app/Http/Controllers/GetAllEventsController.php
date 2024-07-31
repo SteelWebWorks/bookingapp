@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\EventService;
+use App\Formatters\EventFormatter;
+use App\Models\Event;
+use App\Repositories\EventRepository;
+use App\Resources\EventResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 class GetAllEventsController extends Controller
 {
 
-    public function __construct(protected EventService $eventService)
+    public function __construct(protected EventRepository $eventRepository)
     {
     }
 
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(string $startDate, string $endDate)
     {
-        $start = Carbon::parse($request->input('start'));
-        $end = Carbon::parse($request->input('end'));
-        $events = $this->eventService->getAllEvents($start, $end)->toArray();
+        $start = Carbon::parse($startDate);
+        $end = Carbon::parse($endDate);
 
-        return response()->json($events);
+        /** @var Collection $events */
+        $events = $this->eventRepository->getAllEvents($start, $end);
+
+        return EventResource::collection($events);
     }
 }
